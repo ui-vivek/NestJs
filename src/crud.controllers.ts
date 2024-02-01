@@ -1,17 +1,18 @@
 import { Body, Controller ,Delete,Get,Param,Post, Put} from "@nestjs/common";
+import { UsersDTO } from "./dto/users.dto";
 
-interface Users{
-    id:number,
-    name:string,
-    age:number,
-}
+// interface Users{
+//     id:number,
+//     name:string,
+//     age:number,
+// }
 
 @Controller('/crud')
 export class CrudControllers{
 
     users = []
     @Post('/create')
-    crrateUser(@Body() data:Users){
+    crrateUser(@Body() data:UsersDTO){
         data.id= Date.now();
         this.users.push(data)
         return "User Created Successfully."
