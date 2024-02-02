@@ -1,17 +1,38 @@
-import { Body, Controller, Get, Post, Res } from "@nestjs/common";
-import { get } from "http";
+import { Body, Controller, Delete, Get, Param, Post, Put, Res } from "@nestjs/common";
+import { UsersService } from "./users.service";
+import { UsersDTO } from "./dto/users.dto";
 @Controller('/users')
 export class UsersControler{
-    @Get('/profile')
-    getProfile(){
-        return ({user:"True"})
-    }
+    constructor(private userservice : UsersService){}
 
     @Post('/create')
-    createUser(@Body() data , @Res() res){
-        // When we use Res() then we have to manualy return/handel the return statement res.status.json()
-        // Otherwise Nest will automatically handel the retuen method.
-        console.log(data)
-        res.status(201).json({ message: 'User Created.' });
+    createUser(@Body() userData:UsersDTO){
+        userData.id = Date.now()
+        let res = this.userservice.createUsers(userData);
+        return res;
+    }
+
+    @Get('/get/all')
+    getAllUsers(){
+        let res = this.userservice.getAllUsers();
+        return res;
+    }
+
+    @Get('/get/:id')
+    getSingleUser(@Param('id') id:number){
+        return this.userservice.getSingleUser(id);
+    }
+
+    @Put('update/:id')
+    updateUser(@Param('id') id:number,@Body() userData:UsersDTO){
+        if(!userData || !id){
+            return ({status:404,data:{},message:"Please enter user details."})
+        }
+        return this.userservice.updateUser(id,userData)
+    }
+
+    @Delete('/delete/:id')
+    deleteUser(@Param('id') id :number){
+        return this.userservice.deleteUser(id)
     }
 }

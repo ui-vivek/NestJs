@@ -7,6 +7,7 @@ import { CrudControllers } from './crud.controllers';
 import { HostIpSubDomain } from './hostIpSubDomain.controller';
 import { UsersStore } from './users.store';
 import { TestInjectionController } from './testInjections.controller';
+import { UsersService } from './users.service';
 let Toggle = false;
 @Module({
   imports: [],
@@ -33,7 +34,8 @@ let Toggle = false;
   {
     provide:'Inj',
     useValue:55
-  }
+  },
+  UsersService
 ],
 })
 export class AppModule {}
