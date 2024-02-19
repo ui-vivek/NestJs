@@ -1,0 +1,16 @@
+Feature modules in NestJS are a way to organize and structure your application's code. They are a way to group related code together, making it easier to understand and maintain.
+
+In NestJS, a feature module is typically defined in a separate file, and it contains the components, providers, and other dependencies that are specific to a particular feature or area of the application. This can include controllers, services, models, and other classes that are used by that feature.
+
+Feature modules can be nested, allowing you to organize your code even further. This can be useful when you have a large application with many features, or when you want to break down a large feature into smaller, more manageable pieces.
+
+Feature modules have several benefits, including:
+
+Modularity: Feature modules allow you to break down your application into smaller, more manageable units, making it easier to understand and maintain.
+Testability: Since feature modules are typically defined in separate files, they can be tested independently, which can improve the quality of your tests.
+Scalability: Feature modules can be easily reused and combined, making it easier to scale your application as your needs change.
+
+
+Overall, feature modules are a powerful tool that can help you organize and structure your NestJS application, making it easier to understand, maintain, and scale.
+
+NOTE : A feature module simply organizes code relevant for a specific feature, keeping code organized and establishing clear boundaries.

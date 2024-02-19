@@ -17,6 +17,8 @@ export class TestInjectionController{
     @Get('/get/toggle')
     getToggle(){
 
-        return this.EVENT_STORE
+       console.log(this.EVENT_STORE)
+       console.log(this.EVENT_STORE.injectedValue[0].description)
+       return this.EVENT_STORE
     }
 }

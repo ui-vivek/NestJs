@@ -8,9 +8,11 @@ import { HostIpSubDomain } from './hostIpSubDomain.controller';
 import { UsersStore } from './users.store';
 import { TestInjectionController } from './testInjections.controller';
 import { UsersService } from './users.service';
+import { TestModule } from './Feature Module/feature.module';
+import { DatabaseModule } from './Test Mongodb/student.module';
 let Toggle = false;
 @Module({
-  imports: [],
+  imports: [TestModule,DatabaseModule],
   controllers: [AppController,UsersControler,TestsControler,CrudControllers,HostIpSubDomain,TestInjectionController],
   providers: [AppService,{provide:"USS", useClass : UsersStore} , {provide:'Value',useValue:"This is the String value from module"} ,
   {
@@ -33,7 +35,7 @@ let Toggle = false;
   },
   {
     provide:'Inj',
-    useValue:55
+    useValue:[{name:'Inj',id:23,description:'Hello world'}]
   },
   UsersService
 ],
