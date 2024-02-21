@@ -6,7 +6,7 @@ import { StudentService } from './student.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb-URL'),
+    MongooseModule.forRoot('mongodb://localhost:27017/Student'),
     MongooseModule.forFeature([{ name: Student.name, schema: StudentSchema }]),
   ],
   controllers: [StudentController],
